@@ -1,7 +1,8 @@
 class Solution {
-    public void bfs(List<List<Integer>> adj, int s, boolean[] visit){
+    public boolean bfs(List<List<Integer>> adj, int s, boolean[] visit, int d){
         Queue<Integer> q = new LinkedList<>() ;
         q.add(s) ;
+        if(s==d) return true ;
         visit[s] = true ;
         while(q.size() > 0){
             int f = q.remove() ;
@@ -10,8 +11,10 @@ class Solution {
                     q.add(ele) ;
                     visit[ele] = true ;
                 }
+                if(ele == d) return true ;
             }
         }
+        return false ;
     }
     public boolean validPath(int m, int[][] edges, int source, int destination) {
         List<List<Integer>> adj = new ArrayList<>() ;
@@ -26,7 +29,7 @@ class Solution {
             adj.get(y).add(x) ;
         }
         boolean[] visit = new boolean[m] ;
-        bfs(adj , source, visit) ;
-        return visit[destination] ;
+        return bfs(adj , source, visit , destination) ;
+        //return visit[destination] ;
     }
 }
