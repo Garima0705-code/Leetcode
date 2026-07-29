@@ -1,48 +1,22 @@
 class Solution {
-    class Pair{
-        int i , j ;
-        Pair(int i , int j){
-            this.i = i ;
-            this.j = j ;
-        }
-    }
-    public void bfs(char[][] grid , boolean[][] visited , int i , int j){
+    public void dfs(char[][] grid, int i , int j, boolean[][] visit){
         int m = grid.length ;
         int n = grid[0].length ;
-        Queue<Pair> q = new LinkedList<>() ;
-        q.add(new Pair(i , j)) ;
-        while(q.size() > 0){
-            Pair p = q.remove() ;
-            int row = p.i ;
-            int col = p.j ;
-            if(col+1 < n && grid[row][col+1] == '1' && !visited[row][col+1]){
-                visited[row][col+1] = true ;
-                q.add(new Pair(row , col+1)) ;
-            }
-            if(row+1 < m && grid[row+1][col] == '1' && !visited[row+1][col]){
-                visited[row+1][col] = true ;
-                q.add(new Pair(row+1 , col)) ;
-            }
-            if(col-1 >= 0 && grid[row][col-1] == '1' && !visited[row][col-1]){
-                visited[row][col-1] = true ;
-                q.add(new Pair(row , col-1)) ;
-            }
-            if(row-1 >= 0 && grid[row-1][col] == '1' && !visited[row-1][col]){
-                visited[row-1][col] = true ;
-                q.add(new Pair(row-1 , col)) ;
-            }
-        }
+        visit[i][j] = true ;
+        if(i+1 < m && visit[i+1][j] == false && grid[i+1][j] == '1') dfs(grid,i+1,j,visit) ;
+        if(j-1 >= 0 && visit[i][j-1] == false && grid[i][j-1] == '1') dfs(grid,i,j-1,visit) ;
+        if(i-1 >= 0 && visit[i-1][j] == false && grid[i-1][j] == '1') dfs(grid,i-1,j,visit) ;
+        if(j+1 < n && visit[i][j+1] == false && grid[i][j+1] == '1') dfs(grid,i,j+1,visit) ;
     }
     public int numIslands(char[][] grid) {
         int m = grid.length ;
         int n = grid[0].length ;
-        boolean[][] visited = new boolean[m][n] ;
+        boolean[][] visit = new boolean[m][n] ;
         int count = 0 ;
         for(int i = 0 ; i < m ; i++){
             for(int j = 0 ; j < n ; j++){
-                if(grid[i][j] == '1' && !visited[i][j]){
-                    visited[i][j] = true ;
-                    bfs(grid ,visited , i , j) ;
+                if(grid[i][j] == '1' && visit[i][j] == false){
+                    dfs(grid , i , j , visit) ;
                     count++ ;
                 }
             }
