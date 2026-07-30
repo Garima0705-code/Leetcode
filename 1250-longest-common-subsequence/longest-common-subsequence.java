@@ -12,8 +12,18 @@ class Solution {
         int m = text1.length() ;
         int n = text2.length() ;
         int[][] dp = new int[m][n] ;
-        for(int i = 0 ; i < m ; i++)
-        Arrays.fill(dp[i] , -1) ;
-        return lcs(text1 , text2 , m-1 , n-1 , dp) ;
+        for(int i = 0 ; i < m ; i++){
+            for(int j = 0 ; j < n ; j++){
+                if(text1.charAt(i) == text2.charAt(j)){
+                    int z = (i <= 0 || j <= 0) ? 0 : dp[i-1][j-1] ;
+                    dp[i][j] = 1 + z ;
+                }else{
+                    int x = (i <= 0) ? 0 : dp[i-1][j] ;
+                    int y = (j <= 0) ? 0 : dp[i][j-1] ;
+                    dp[i][j] = Math.max(x , y) ;
+                }
+            }
+        }
+        return dp[m-1][n-1];
     }
 }
