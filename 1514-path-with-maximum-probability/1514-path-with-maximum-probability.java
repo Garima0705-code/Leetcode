@@ -7,7 +7,7 @@ class Solution {
             this.prob = prob ;
         }
         public int compareTo(Pair p){
-            return Double.compare(p.prob , this.prob);
+            return Double.compare(this.prob , p.prob);
         }
     }
     public double maxProbability(int n, int[][] arr, double[] suc, int src, int end) {
@@ -24,7 +24,7 @@ class Solution {
             adj.get(a).add(new Pair(b, pro));
             adj.get(b).add(new Pair(a, pro));
         }
-        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        PriorityQueue<Pair> pq = new PriorityQueue<>(Collections.reverseOrder());
         pq.add(new Pair(src, 1));
         while(pq.size() > 0){
             Pair p = pq.remove();
