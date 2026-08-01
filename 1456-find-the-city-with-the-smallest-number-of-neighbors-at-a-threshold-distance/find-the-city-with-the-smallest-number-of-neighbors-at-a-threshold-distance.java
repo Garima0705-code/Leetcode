@@ -29,7 +29,7 @@ class Solution {
 
         for(int i = 0 ; i < n ; i++){
             for(int j = 0 ; j < n ; j++){
-                if(adj[i][j] <= d) ans[i]++ ;
+                if(i != j && adj[i][j] <= d) ans[i]++ ;
             }
         }
         int min = Integer.MAX_VALUE ;
