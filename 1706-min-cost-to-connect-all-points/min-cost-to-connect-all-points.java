@@ -24,6 +24,7 @@ class Solution {
             visit[t.ele] = true ;
             sum += t.dist ;
             for(int i = 0 ; i < m ; i++){
+                if(visit[i] == true) continue ;
                 if(i != t.ele && i != t.parent){
                     int x2 = points[i][0] , y2 = points[i][1] ;
                     int x1 = points[t.ele][0] , y1 = points[t.ele][1] ;
