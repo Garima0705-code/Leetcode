@@ -4,10 +4,7 @@ class Solution {
         if(n == row){
             List<String> a = new ArrayList<>();
             for(int i = 0 ; i < n ; i++){
-                String s = "";
-                for(int j = 0 ; j < n ; j++){
-                    s += board[i][j];
-                }
+                String s = new String(board[i]);
                 a.add(s);
             }
             ans.add(a);
