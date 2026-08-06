@@ -24,6 +24,7 @@ class Solution {
             Triplet t = pq.remove();
             int row = t.row ;
             int col = t.col;
+            if(row == m-1 && col == n-1) break ;
             int val = t.val ;
             if(row-1 >= 0){
                 int up = Math.abs(heights[row-1][col] - heights[row][col]);
