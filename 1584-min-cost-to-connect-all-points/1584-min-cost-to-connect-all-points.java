@@ -33,8 +33,7 @@ class Solution {
         for(int i = 0; i < n ; i++){
             int x1 = points[i][0];
             int y1 = points[i][1];
-            for(int j = 0 ; j < n ; j++){
-                if(i == j) continue ;
+            for(int j = i+1 ; j < n ; j++){
                 int x2 = points[j][0];
                 int y2 = points[j][1];
                 int dist = Math.abs(x1-x2) + Math.abs(y1-y2) ;
