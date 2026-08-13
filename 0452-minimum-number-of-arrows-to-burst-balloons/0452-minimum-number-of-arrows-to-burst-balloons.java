@@ -7,10 +7,9 @@ class Solution {
         int arrows = 1 ;
         int x = points[0][1] ;
         for(int i = 1 ; i < points.length; i++){
-            if(points[i][0] <= x && points[i][1] >= x){
+            if(points[i][0] <= x){
                 continue ;
             }
-            else if(points[i][0] <= x && points[i][1] <= x) continue ;
             else{
                 arrows++ ;
                 x = points[i][1] ;
