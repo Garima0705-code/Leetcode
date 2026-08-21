@@ -8,14 +8,10 @@ class Solution {
         return false ;
     }
     public boolean isNumber(char s){
-        int ascii = (int)s ;
-        if(ascii >= 48 && ascii <= 57) return true ;
-        return false ;
+        return Character.isDigit(s) ;
     }
     public boolean isLetter(char s){
-        int ascii = (int)s ;
-        if((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122)) return true ;
-        return false ;
+        return Character.isLetter(s) ;
     }
     public boolean isValid(String word) {
         int n = word.length() ;
